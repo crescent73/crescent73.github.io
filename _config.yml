@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: crescent
+title: Crescent
 subtitle: ''
 description: ''
 keywords:
-author: crescent
+author: Crescent
 language: zh-CN
 timezone: 'Asia/Shanghai'
 
@@ -40,7 +40,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: true
+post_asset_folder: false
 relative_link: false
 future: true
 highlight:
