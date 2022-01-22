@@ -173,7 +173,7 @@ anchor: false
 # toc (目錄)
 toc:
   post: true
-  page: false
+  page: true
   number: true
   expand: false
   style_simple: false # for post
@@ -626,7 +626,7 @@ aside:
       link: https://github.com/crescent73
   card_announcement:
     enable: true
-    content: This is my Blog
+    content: 咕咕咕🕊
   card_recent_post:
     enable: true
     limit: 5 # if set 0 will show all

@@ -2,7 +2,7 @@
 title: spring-security
 date: 2022-01-17 15:30:45
 categories: 
-- spring
+- web
 tags:
 - web
 - spring
