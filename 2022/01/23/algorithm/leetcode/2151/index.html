@@ -1,0 +1,182 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>2151. 基于陈述统计最多好人数 | Crescent</title><meta name="keywords" content="algorithm,leetcode,困难"><meta name="author" content="Crescent"><meta name="copyright" content="Crescent"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2151. 基于陈述统计最多好人数难度：困难链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;maximum-good-people-based-on-statements&#x2F; 题目游戏中存在两种角色：  好人：该角色只说真话。 坏人：该角色可能说真话，也可能说假话。    给你一个下标从 0 开始的二维整数数组 statements ，大小为 n x n ，表示 n 个玩家对">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2151. 基于陈述统计最多好人数">
+<meta property="og:url" content="https://crescent73.github.io/2022/01/23/algorithm/leetcode/2151/index.html">
+<meta property="og:site_name" content="Crescent">
+<meta property="og:description" content="2151. 基于陈述统计最多好人数难度：困难链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;maximum-good-people-based-on-statements&#x2F; 题目游戏中存在两种角色：  好人：该角色只说真话。 坏人：该角色可能说真话，也可能说假话。    给你一个下标从 0 开始的二维整数数组 statements ，大小为 n x n ，表示 n 个玩家对">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://crescent73.github.io/img/bg.jpg">
+<meta property="article:published_time" content="2022-01-23T07:22:44.000Z">
+<meta property="article:modified_time" content="2022-03-26T09:36:54.741Z">
+<meta property="article:author" content="Crescent">
+<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="leetcode">
+<meta property="article:tag" content="困难">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://crescent73.github.io/img/bg.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://crescent73.github.io/2022/01/23/algorithm/leetcode/2151/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '2151. 基于陈述统计最多好人数',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-03-26 17:36:54'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.0.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">54</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">38</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/bg.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Crescent</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">2151. 基于陈述统计最多好人数</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-01-23T07:22:44.000Z" title="发表于 2022-01-23 15:22:44">2022-01-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-26T09:36:54.741Z" title="更新于 2022-03-26 17:36:54">2022-03-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/algorithm/">algorithm</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">571</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="2151. 基于陈述统计最多好人数"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="2151-基于陈述统计最多好人数"><a href="#2151-基于陈述统计最多好人数" class="headerlink" title="2151. 基于陈述统计最多好人数"></a>2151. 基于陈述统计最多好人数</h1><p><strong>难度：困难</strong><br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/maximum-good-people-based-on-statements/">https://leetcode-cn.com/problems/maximum-good-people-based-on-statements/</a></p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>游戏中存在两种角色：</p>
+<ul>
+<li>好人：该角色只说真话。</li>
+<li>坏人：该角色可能说真话，也可能说假话。  </li>
+</ul>
+<p>给你一个下标从 0 开始的二维整数数组 statements ，大小为 n x n ，表示 n 个玩家对彼此角色的陈述。具体来说，statements[i][j] 可以是下述值之一：</p>
+<ul>
+<li>0 表示 i 的陈述认为 j 是 坏人 。</li>
+<li>1 表示 i 的陈述认为 j 是 好人 。</li>
+<li>2 表示 i 没有对 j 作出陈述。</li>
+</ul>
+<p>另外，玩家不会对自己进行陈述。形式上，对所有 0 &lt;= i &lt; n ，都有 statements[i][i] = 2 。</p>
+<p>根据这 n 个玩家的陈述，返回可以认为是 好人 的 最大 数目。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p><img src="https://assets.leetcode.com/uploads/2022/01/15/logic1.jpg"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">输入：statements = [[2,1,2],[1,2,2],[2,0,2]]</span><br><span class="line">输出：2</span><br><span class="line">解释：每个人都做一条陈述。</span><br><span class="line">- 0 认为 1 是好人。</span><br><span class="line">- 1 认为 0 是好人。</span><br><span class="line">- 2 认为 1 是坏人。</span><br><span class="line">以 2 为突破点。</span><br><span class="line">- 假设 2 是一个好人：</span><br><span class="line">    - 基于 2 的陈述，1 是坏人。</span><br><span class="line">    - 那么可以确认 1 是坏人，2 是好人。</span><br><span class="line">    - 基于 1 的陈述，由于 1 是坏人，那么他在陈述时可能：</span><br><span class="line">        - 说真话。在这种情况下会出现矛盾，所以假设无效。</span><br><span class="line">        - 说假话。在这种情况下，0 也是坏人并且在陈述时说假话。</span><br><span class="line">    - 在认为 2 是好人的情况下，这组玩家中只有一个好人。</span><br><span class="line">- 假设 2 是一个坏人：</span><br><span class="line">    - 基于 2 的陈述，由于 2 是坏人，那么他在陈述时可能：</span><br><span class="line">        - 说真话。在这种情况下，0 和 1 都是坏人。</span><br><span class="line">            - 在认为 2 是坏人但说真话的情况下，这组玩家中没有一个好人。</span><br><span class="line">        - 说假话。在这种情况下，1 是好人。</span><br><span class="line">            - 由于 1 是好人，0 也是好人。</span><br><span class="line">            - 在认为 2 是坏人且说假话的情况下，这组玩家中有两个好人。</span><br><span class="line">在最佳情况下，至多有两个好人，所以返回 2 。</span><br><span class="line">注意，能得到此结论的方法不止一种。</span><br></pre></td></tr></table></figure>
+
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><ul>
+<li>n == statements.length == statements[i].length</li>
+<li>2 &lt;= n &lt;= 15</li>
+<li>statements[i][j] 的值为 0、1 或 2</li>
+<li>statements[i][i] == 2</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p><strong>方法</strong>  </p>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Crescent</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://crescent73.github.io/2022/01/23/algorithm/leetcode/2151/">https://crescent73.github.io/2022/01/23/algorithm/leetcode/2151/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://crescent73.github.io" target="_blank">Crescent</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/algorithm/">algorithm</a><a class="post-meta__tags" href="/tags/leetcode/">leetcode</a><a class="post-meta__tags" href="/tags/%E5%9B%B0%E9%9A%BE/">困难</a></div><div class="post_share"><div class="social-share" data-image="/img/bg.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/02/06/algorithm/leetcode/2164/"><img class="prev-cover" src="/img/bg.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">2164. 对奇偶下标分别排序</div></div></a></div><div class="next-post pull-right"><a href="/2022/01/23/algorithm/leetcode/2150/"><img class="next-cover" src="/img/bg.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2150. 找出数组中的所有孤独数字</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/02/06/algorithm/leetcode/2167/" title="2167. 移除所有载有违禁货物车厢所需的最少时间"><img class="cover" src="/img/bg.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-06</div><div class="title">2167. 移除所有载有违禁货物车厢所需的最少时间</div></div></a></div><div><a href="/2022/02/13/algorithm/leetcode/2172/" title="2172. 数组的最大与和"><img class="cover" src="/img/bg.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-13</div><div class="title">2172. 数组的最大与和</div></div></a></div><div><a href="/2022/02/20/algorithm/leetcode/2183/" title="2183. 统计可以被 K 整除的下标对数目"><img class="cover" src="/img/bg.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-20</div><div class="title">2183. 统计可以被 K 整除的下标对数目</div></div></a></div><div><a href="/2022/02/27/algorithm/leetcode/2188/" title="2188. 完成比赛的最少时间"><img class="cover" src="/img/bg.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-27</div><div class="title">2188. 完成比赛的最少时间</div></div></a></div><div><a href="/2022/03/06/algorithm/leetcode/2197/" title="2197. 替换数组中的非互质数"><img class="cover" src="/img/bg.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-06</div><div class="title">2197. 替换数组中的非互质数</div></div></a></div><div><a href="/2022/03/13/algorithm/leetcode/2203/" title="2203. 得到要求路径的最小带权子图"><img class="cover" src="/img/bg.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-13</div><div class="title">2203. 得到要求路径的最小带权子图</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Crescent</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">54</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">38</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/crescent73"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/crescent73" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/mail%20to:crescent3919@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">咕咕咕🕊</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2151-%E5%9F%BA%E4%BA%8E%E9%99%88%E8%BF%B0%E7%BB%9F%E8%AE%A1%E6%9C%80%E5%A4%9A%E5%A5%BD%E4%BA%BA%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">2151. 基于陈述统计最多好人数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.2.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA"><span class="toc-number">1.3.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">1.4.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94"><span class="toc-number">1.5.</span> <span class="toc-text">解答</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/03/20/algorithm/leetcode/6030/" title="6030. 由单个字符重复的最长子字符串">6030. 由单个字符重复的最长子字符串</a><time datetime="2022-03-20T09:37:57.000Z" title="发表于 2022-03-20 17:37:57">2022-03-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/03/20/algorithm/leetcode/6029/" title="6029. 射箭比赛中的最大得分">6029. 射箭比赛中的最大得分</a><time datetime="2022-03-20T09:37:44.000Z" title="发表于 2022-03-20 17:37:44">2022-03-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/03/20/algorithm/leetcode/6028/" title="6028. 统计道路上的碰撞次数">6028. 统计道路上的碰撞次数</a><time datetime="2022-03-20T09:37:34.000Z" title="发表于 2022-03-20 17:37:34">2022-03-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/03/20/algorithm/leetcode/6027/" title="6027. 统计数组中峰和谷的数量">6027. 统计数组中峰和谷的数量</a><time datetime="2022-03-20T09:36:18.000Z" title="发表于 2022-03-20 17:36:18">2022-03-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/03/13/web/authority-management-5/" title="权限管理（五）">权限管理（五）</a><time datetime="2022-03-13T09:11:52.000Z" title="发表于 2022-03-13 17:11:52">2022-03-13</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/bg.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Crescent</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
