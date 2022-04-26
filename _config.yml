@@ -104,6 +104,6 @@ theme: butterfly
 deploy:
   type: git
   repo: 
-    github: https://github.com/crescent73/crescent73.github.io
     gitee: https://gitee.com/crescent73/crescent73
+    github: https://github.com/crescent73/crescent73.github.io
   branch: master

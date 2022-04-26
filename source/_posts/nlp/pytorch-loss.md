@@ -2,7 +2,7 @@
 title: pytorch-loss
 date: 2022-04-22 11:39:03
 categories:
-- pytroch
+- nlp
 tags:
 - pytorch
 - loss

@@ -2,7 +2,7 @@
 title:  <<Matching the Blanks,Distributional Similarity for Relation Learning>>论文阅读笔记
 date: 2022-04-21 15:32:44
 categories:
-- relation extraction
+- nlp
 tags:
 - relation extraction
 - nlp
