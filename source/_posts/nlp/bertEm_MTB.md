@@ -5,6 +5,7 @@ categories:
 - nlp
 tags:
 - relation extraction
+- ACL 2019
 - nlp
 - bertEm
 - paper
