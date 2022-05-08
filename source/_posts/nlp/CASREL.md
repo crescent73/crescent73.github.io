@@ -44,7 +44,7 @@ class CasRel(nn.Module):
         self.sub_heads_linear = nn.Linear(self.config.bert_dim, 1)
         self.sub_tails_linear = nn.Linear(self.config.bert_dim, 1)
         self.obj_heads_linear = nn.Linear(self.config.bert_dim, self.config.num_relations)
-        self.obj_tails_linear = nn.Linear(self.config.bert_dim, self.config.num_relations)
+        self.obj_tails_linear = nn.Linear(self.config.bert_dim, self.config.num_relations) 
 
     def get_encoded_text(self, token_ids, mask):
         encoded_text = self.bert(token_ids, attention_mask=mask)[0]
