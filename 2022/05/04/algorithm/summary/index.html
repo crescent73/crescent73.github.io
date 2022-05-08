@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>算法总结 | Crescent</title><meta name="keywords" content="algorithm,summary"><meta name="author" content="Crescent"><meta name="copyright" content="Crescent"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="算法刷题总结刷了一些算法题，感觉有些题有套路，所以在这里做下笔记，总结一下！最近做的周赛比较多，所以，先总结周赛里的一些套路。 二分二分应该算是很简单的题了，一般，我看一个题能不能拿二分做，就看判断条件。如果判断是不是满足条件特别好算，然后有最大最小值，可以直接遍历求解，那就拿二分做。个人感觉二分的难点在于边界条件的判定？需要比较细心。PS: 也有一下hard题披着马甲，虽然说是二分，但是根本想不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法总结">
+<meta property="og:url" content="https://crescent73.github.io/2022/05/04/algorithm/summary/index.html">
+<meta property="og:site_name" content="Crescent">
+<meta property="og:description" content="算法刷题总结刷了一些算法题，感觉有些题有套路，所以在这里做下笔记，总结一下！最近做的周赛比较多，所以，先总结周赛里的一些套路。 二分二分应该算是很简单的题了，一般，我看一个题能不能拿二分做，就看判断条件。如果判断是不是满足条件特别好算，然后有最大最小值，可以直接遍历求解，那就拿二分做。个人感觉二分的难点在于边界条件的判定？需要比较细心。PS: 也有一下hard题披着马甲，虽然说是二分，但是根本想不">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://crescent73.github.io/img/bg.jpg">
+<meta property="article:published_time" content="2022-05-04T08:16:41.000Z">
+<meta property="article:modified_time" content="2022-05-04T09:51:59.717Z">
+<meta property="article:author" content="Crescent">
+<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="summary">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://crescent73.github.io/img/bg.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://crescent73.github.io/2022/05/04/algorithm/summary/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '算法总结',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-05-04 17:51:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.0.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">81</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">79</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/bg.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Crescent</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">算法总结</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-04T08:16:41.000Z" title="发表于 2022-05-04 16:16:41">2022-05-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-05-04T09:51:59.717Z" title="更新于 2022-05-04 17:51:59">2022-05-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/algorithm/">algorithm</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="算法总结"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="算法刷题总结"><a href="#算法刷题总结" class="headerlink" title="算法刷题总结"></a>算法刷题总结</h1><p>刷了一些算法题，感觉有些题有套路，所以在这里做下笔记，总结一下！<br>最近做的周赛比较多，所以，先总结周赛里的一些套路。</p>
+<h2 id="二分"><a href="#二分" class="headerlink" title="二分"></a>二分</h2><p>二分应该算是很简单的题了，一般，我看一个题能不能拿二分做，就看判断条件。如果判断是不是满足条件特别好算，然后有最大最小值，可以直接遍历求解，那就拿二分做。<br>个人感觉二分的难点在于边界条件的判定？需要比较细心。<br>PS: 也有一下hard题披着马甲，虽然说是二分，但是根本想不到。<br>python模板：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化左右边界</span></span><br><span class="line">left, right = min_value, max_value</span><br><span class="line"><span class="keyword">while</span> left &lt;= right:</span><br><span class="line">    mid = (left + right) // <span class="number">2</span> <span class="comment"># 计算中间值</span></span><br><span class="line">    <span class="keyword">if</span> 判断条件:</span><br><span class="line">        left = mid + <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        right = mid - <span class="number">1</span></span><br><span class="line"><span class="comment"># 后续操作</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>代表题目： </p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/maximum-running-time-of-n-computers/">同时运行 N 台电脑的最长时间</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-time-to-complete-trips/">完成旅途的最少时间</a></li>
+</ul>
+<h2 id="hash表"><a href="#hash表" class="headerlink" title="hash表"></a>hash表</h2><p>hash表有个特点，就是判断某个元素是否在表中的事件复杂度是O(1)！<br>代表题目： </p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/count-words-obtained-after-adding-a-letter/">统计追加字母可以获得的单词数</a></li>
+</ul>
+<h2 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h2><p>贪心题个人感觉就是思路题，一般都是先排序再找一个贪心的策略。这种策略需要证明是每一步最优的（当然做题的时候不会证明）。听起来挺简单，但是实际做的时候，感觉很多题贪心的思路很难想。<br>代表题目：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/construct-string-with-repeat-limit/">构造限制重复的字符串</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/removing-minimum-number-of-magic-beans/">拿出最少数目的魔法豆</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-operations-to-make-the-array-alternating/">使数组变成交替数组的最少操作数</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-moves-to-reach-target-score/">得到目标值的最少行动次数</a></li>
+</ul>
+<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><p>二叉树感觉这儿有很多trick！<br>首先是建二叉树，一种建树的方式是，拿一个set存储所有的树节点，然后建节点之间关系的时候，直接从set里拿。这样，一次遍历以后，树的结构已经建好了，然后需要二次遍历找到树的根节点（一般就找没有父节点的点）。<br>代表题目：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/create-binary-tree-from-descriptions/">根据描述创建二叉树</a></li>
+</ul>
+<p>二叉树的遍历：一般是dfs和bfs。目前刷的题比较少，等多刷几道题再补上！</p>
+<h2 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h2><p>滑动窗口的题感觉，比较巧妙？前提是，你要能想到，能通过窗口，判断数据是不是满足题目条件！<br>有个trick，如果每次移动窗口，都对窗口求和或者其他操作的话，肯定超时。所以，需要手动维护窗口的状态。比如窗口右移一位，对于窗口中的元素来说，是左边少了一个数，右边多了一个数，所以，可以多加两个变量记录，直接加减变量值。<br>代表题目：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-swaps-to-group-all-1s-together-ii/">最少交换次数来组合所有的 1 II</a></li>
+</ul>
+<h2 id="dp"><a href="#dp" class="headerlink" title="dp"></a>dp</h2><p>dp感觉是个重重点，但是一直没怎么弄懂。目前的感觉就是，走到后面的步的时候，需要前面步的状态，所以，需要考虑好转移方程（后面的步怎么从前面的步转移过来），还有初始化条件。<br>代表题目：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/solving-questions-with-brainpower/">解决智力问题</a></li>
+</ul>
+<h2 id="状态压缩"><a href="#状态压缩" class="headerlink" title="状态压缩"></a>状态压缩</h2><p>状态压缩感觉也是个重点，思路是穷举，一般用在数据量不大的情况下。具体来说就是，穷举每一种可能的情况，用01状态表示，然后对于每一种情况，判断是否满足条件，如果满足条件，进行进一步的判断。<br>这个算法一开始对我来说，最难的是怎么构造出2**n种状态表示方法，但是这块，感觉是能拿模板直接做的。<br>python模板：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># n表示有n个状态</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>**n):</span><br><span class="line">    tmp = i</span><br><span class="line">    bit_tmp = []</span><br><span class="line">    <span class="keyword">while</span> tmp &gt; <span class="number">0</span>:</span><br><span class="line">        bit_tmp.append(tmp&amp;<span class="number">1</span>)<span class="comment"># 1 的二进制是 0000001，所以 &amp;1 就是取最后一位</span></span><br><span class="line">        tmp&gt;&gt;=<span class="number">1</span> <span class="comment"># &gt;&gt; 位运算符，原来所有位右移，最低位丢弃，最高位使用符号位填充</span></span><br><span class="line">    bit_tmp.extend([<span class="number">0</span>]*(n-<span class="built_in">len</span>(bit_tmp))) <span class="comment"># 空位补0，这里应该从右往左看</span></span><br><span class="line">    <span class="comment"># 正式判断</span></span><br></pre></td></tr></table></figure>
+<p>代表题目：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/maximum-points-in-an-archery-competition/">射箭比赛中的最大得分</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Crescent</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://crescent73.github.io/2022/05/04/algorithm/summary/">https://crescent73.github.io/2022/05/04/algorithm/summary/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://crescent73.github.io" target="_blank">Crescent</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/algorithm/">algorithm</a><a class="post-meta__tags" href="/tags/summary/">summary</a></div><div class="post_share"><div class="social-share" data-image="/img/bg.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/05/08/algorithm/leetcode/6056/"><img class="prev-cover" src="/img/bg.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">6056. 字符串中最大的 3 位相同数字</div></div></a></div><div class="next-post pull-right"><a href="/2022/05/01/algorithm/leetcode/2262/"><img class="next-cover" src="/img/bg.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2262. 字符串的总引力</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/01/23/algorithm/leetcode/2148/" title="2148. 元素计数"><img class="cover" src="/img/bg.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-23</div><div class="title">2148. 元素计数</div></div></a></div><div><a href="/2022/01/23/algorithm/leetcode/2149/" title="2149. 按符号重排数组"><img class="cover" src="/img/bg.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-23</div><div class="title">2149. 按符号重排数组</div></div></a></div><div><a href="/2022/01/23/algorithm/leetcode/2151/" title="2151. 基于陈述统计最多好人数"><img class="cover" src="/img/bg.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-23</div><div class="title">2151. 基于陈述统计最多好人数</div></div></a></div><div><a href="/2022/01/23/algorithm/leetcode/2150/" title="2150. 找出数组中的所有孤独数字"><img class="cover" src="/img/bg.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-23</div><div class="title">2150. 找出数组中的所有孤独数字</div></div></a></div><div><a href="/2022/02/06/algorithm/leetcode/2165/" title="2165. 重排数字的最小值"><img class="cover" src="/img/bg.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-06</div><div class="title">2165. 重排数字的最小值</div></div></a></div><div><a href="/2022/02/06/algorithm/leetcode/2164/" title="2164. 对奇偶下标分别排序"><img class="cover" src="/img/bg.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-06</div><div class="title">2164. 对奇偶下标分别排序</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Crescent</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">81</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">79</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/crescent73"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/crescent73" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/mail%20to:crescent3919@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">咕咕咕🕊</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93"><span class="toc-number">1.</span> <span class="toc-text">算法刷题总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%88%86"><span class="toc-number">1.1.</span> <span class="toc-text">二分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hash%E8%A1%A8"><span class="toc-number">1.2.</span> <span class="toc-text">hash表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83"><span class="toc-number">1.3.</span> <span class="toc-text">贪心</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">1.4.</span> <span class="toc-text">二叉树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="toc-number">1.5.</span> <span class="toc-text">滑动窗口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dp"><span class="toc-number">1.6.</span> <span class="toc-text">dp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9"><span class="toc-number">1.7.</span> <span class="toc-text">状态压缩</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/05/08/algorithm/leetcode/6059/" title="6059. 检查是否有合法括号字符串路径">6059. 检查是否有合法括号字符串路径</a><time datetime="2022-05-08T14:26:58.000Z" title="发表于 2022-05-08 22:26:58">2022-05-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/05/08/algorithm/leetcode/6058/" title="6058. 统计打字方案数">6058. 统计打字方案数</a><time datetime="2022-05-08T14:26:49.000Z" title="发表于 2022-05-08 22:26:49">2022-05-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/05/08/algorithm/leetcode/6057/" title="6057. 统计值等于子树平均值的节点数">6057. 统计值等于子树平均值的节点数</a><time datetime="2022-05-08T14:26:43.000Z" title="发表于 2022-05-08 22:26:43">2022-05-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/05/08/algorithm/leetcode/6056/" title="6056. 字符串中最大的 3 位相同数字">6056. 字符串中最大的 3 位相同数字</a><time datetime="2022-05-08T14:26:36.000Z" title="发表于 2022-05-08 22:26:36">2022-05-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/05/04/algorithm/summary/" title="算法总结">算法总结</a><time datetime="2022-05-04T08:16:41.000Z" title="发表于 2022-05-04 16:16:41">2022-05-04</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/bg.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Crescent</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
