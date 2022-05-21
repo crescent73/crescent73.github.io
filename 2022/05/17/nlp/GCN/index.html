@@ -1,0 +1,178 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>&lt;&lt;Semi-Supervised Classification with Graph Convolutional Networks&gt;&gt; 论文阅读笔记 | Crescent</title><meta name="keywords" content="nlp,paper,ICLR 2019,GCN"><meta name="author" content="Crescent"><meta name="copyright" content="Crescent"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="&lt;&lt; Semi-Supervised Classification with Graph Convolutional Networks &gt;&gt;论文阅读笔记论文地址：“Semi-Supervised Classification with Graph Convolutional Networks”复现代码：https:&#x2F;&#x2F;github.com&#x2F;tkipf&#x2F;pygcn核心思想：G">
+<meta property="og:type" content="article">
+<meta property="og:title" content="&lt;&lt;Semi-Supervised Classification with Graph Convolutional Networks&gt;&gt; 论文阅读笔记">
+<meta property="og:url" content="https://crescent73.github.io/2022/05/17/nlp/GCN/index.html">
+<meta property="og:site_name" content="Crescent">
+<meta property="og:description" content="&lt;&lt; Semi-Supervised Classification with Graph Convolutional Networks &gt;&gt;论文阅读笔记论文地址：“Semi-Supervised Classification with Graph Convolutional Networks”复现代码：https:&#x2F;&#x2F;github.com&#x2F;tkipf&#x2F;pygcn核心思想：G">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://crescent73.github.io/img/bg.jpg">
+<meta property="article:published_time" content="2022-05-17T08:02:12.000Z">
+<meta property="article:modified_time" content="2022-05-17T09:17:12.545Z">
+<meta property="article:author" content="Crescent">
+<meta property="article:tag" content="nlp">
+<meta property="article:tag" content="paper">
+<meta property="article:tag" content="ICLR 2019">
+<meta property="article:tag" content="GCN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://crescent73.github.io/img/bg.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://crescent73.github.io/2022/05/17/nlp/GCN/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '<<Semi-Supervised Classification with Graph Convolutional Networks>> 论文阅读笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-05-17 17:17:12'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.0.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">87</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">89</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/bg.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Crescent</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">&lt;&lt;Semi-Supervised Classification with Graph Convolutional Networks&gt;&gt; 论文阅读笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-17T08:02:12.000Z" title="发表于 2022-05-17 16:02:12">2022-05-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-05-17T09:17:12.545Z" title="更新于 2022-05-17 17:17:12">2022-05-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/nlp/">nlp</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">893</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="&lt;&lt;Semi-Supervised Classification with Graph Convolutional Networks&gt;&gt; 论文阅读笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="lt-lt-Semi-Supervised-Classification-with-Graph-Convolutional-Networks-gt-gt-论文阅读笔记"><a href="#lt-lt-Semi-Supervised-Classification-with-Graph-Convolutional-Networks-gt-gt-论文阅读笔记" class="headerlink" title="&lt;&lt; Semi-Supervised Classification with Graph Convolutional Networks &gt;&gt;论文阅读笔记"></a>&lt;&lt; Semi-Supervised Classification with Graph Convolutional Networks &gt;&gt;论文阅读笔记</h1><p>论文地址：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1609.02907">“Semi-Supervised Classification with Graph Convolutional Networks”</a><br>复现代码：<a target="_blank" rel="noopener" href="https://github.com/tkipf/pygcn">https://github.com/tkipf/pygcn</a><br>核心思想：GCN, 图卷积网络</p>
+<h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>大名鼎鼎的图卷积网络。作者提出了一种图神经网络的建模方式，并给出了数学证明（从图谱角度）。</p>
+<h2 id="模型设计"><a href="#模型设计" class="headerlink" title="模型设计"></a>模型设计</h2><p>模型的核心公式如下：<br><img src="https://pic1.zhimg.com/80/v2-94c7d5014d9e9bcf81f630831cf9d9f0_1440w.png"><br>其中，H表示每一层的节点特征信息，初始为X；D为度矩阵；A~为临界矩阵加上单位矩阵。  </p>
+<p>下面说下这个矩阵的由来：<br>首先看这个公式<br><img src="https://pic1.zhimg.com/80/v2-a4b9b17168017254b9ab3eb3c021d168_1440w.png"><br>这个公式可以理解为一个简单的图神经网络，A*H表示用H的临界节点更新H（相当于做了个Self-Attention），然后做了个FC，过了个激活函数。<br>这样做的缺点有二：</p>
+<ol>
+<li>A*H只考虑了临接节点，并没有考虑自己，所以将其改进为 A~=A+I</li>
+<li>A没有经过归一化，与矩阵相乘会改变特征的分布，所以需要做一个归一化 <img src="https://www.zhihu.com/equation?tex=D%5E%7B-1/2%7DAD%5E%7B-1/2%7D"></li>
+</ol>
+<p>从一个直观上的理解，我们可以认为图中的节点，因为邻居节点和更远的节点影响改变自己的状态，直到达到平衡。且关系越相近的邻居节点影响越大。这里这种 <img src="https://www.zhihu.com/equation?tex=D%5E%7B-1/2%7DAD%5E%7B-1/2%7D"> 计算方式，从数学角度和对称归一化的拉普拉斯矩阵相似，和图谱卷积的核心公式类似，因此也能被成为是一种卷积。</p>
+<h2 id="模型实现"><a href="#模型实现" class="headerlink" title="模型实现"></a>模型实现</h2><p>具体实现来说很简单（毕竟公式就很简单）。<br>adj 邻接矩阵是预先计算好的，在模型训练的时候不会更改。实际上就是做了两个矩阵乘法，然后过了激活层，转成非线性的。<br>官方代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GraphConvolution</span>(<span class="params">Module</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Simple GCN layer, similar to https://arxiv.org/abs/1609.02907</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, in_features, out_features, bias=<span class="literal">True</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>(GraphConvolution, self).__init__()</span><br><span class="line">        self.in_features = in_features</span><br><span class="line">        self.out_features = out_features</span><br><span class="line">        self.weight = Parameter(torch.FloatTensor(in_features, out_features))</span><br><span class="line">        <span class="keyword">if</span> bias:</span><br><span class="line">            self.bias = Parameter(torch.FloatTensor(out_features))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.register_parameter(<span class="string">&#x27;bias&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line">        self.reset_parameters()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reset_parameters</span>(<span class="params">self</span>):</span></span><br><span class="line">        stdv = <span class="number">1.</span> / math.sqrt(self.weight.size(<span class="number">1</span>))</span><br><span class="line">        self.weight.data.uniform_(-stdv, stdv)</span><br><span class="line">        <span class="keyword">if</span> self.bias <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            self.bias.data.uniform_(-stdv, stdv)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, <span class="built_in">input</span>, adj</span>):</span></span><br><span class="line">        support = torch.mm(<span class="built_in">input</span>, self.weight) <span class="comment"># x*w</span></span><br><span class="line">        output = torch.spmm(adj, support) <span class="comment"># adj * x * w</span></span><br><span class="line">        <span class="keyword">if</span> self.bias <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> output + self.bias</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.__class__.__name__ + <span class="string">&#x27; (&#x27;</span> \</span><br><span class="line">               + <span class="built_in">str</span>(self.in_features) + <span class="string">&#x27; -&gt; &#x27;</span> \</span><br><span class="line">               + <span class="built_in">str</span>(self.out_features) + <span class="string">&#x27;)&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="应用于分类任务"><a href="#应用于分类任务" class="headerlink" title="应用于分类任务"></a>应用于分类任务</h3><p>如果想应用于分类任务，直接在模型最后一层的输出后加个Softmax。Loss用的交叉熵。<br><img src="https://pic3.zhimg.com/80/v2-6aebc0dd82beeb43291291b01e63003a_1440w.jpg"><br>两层GCN应用于分类的模型结构：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GCN</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, nfeat, nhid, nclass, dropout</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(GCN, self).__init__()</span><br><span class="line"></span><br><span class="line">        self.gc1 = GraphConvolution(nfeat, nhid)</span><br><span class="line">        self.gc2 = GraphConvolution(nhid, nclass)</span><br><span class="line">        self.dropout = dropout</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x, adj</span>):</span></span><br><span class="line">        x = F.relu(self.gc1(x, adj)) <span class="comment"># GCN</span></span><br><span class="line">        x = F.dropout(x, self.dropout, training=self.training) <span class="comment"># dropout</span></span><br><span class="line">        x = self.gc2(x, adj)</span><br><span class="line">        <span class="keyword">return</span> F.log_softmax(x, dim=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>论文里说，即使不训练模型，完全使用随机初始化的参数W，GCN提取出来的特征就很优秀了（在一些分类的类别上能达到聚类的效果）。但作者说，GCN的网络层数不宜过深，一般两层就够了，层数太多不会对模型结果有太大提升，反而会增加模型的复杂度。后续又提出了很多深层图卷积网络，对模型结构进行改进（添加残差等），使GCN适用于多层神经网络堆叠的情况。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/71200936">https://zhuanlan.zhihu.com/p/71200936</a></li>
+<li><a target="_blank" rel="noopener" href="http://tkipf.github.io/graph-convolutional-networks/">http://tkipf.github.io/graph-convolutional-networks/</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/54504471">https://www.zhihu.com/question/54504471</a></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Crescent</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://crescent73.github.io/2022/05/17/nlp/GCN/">https://crescent73.github.io/2022/05/17/nlp/GCN/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://crescent73.github.io" target="_blank">Crescent</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/nlp/">nlp</a><a class="post-meta__tags" href="/tags/paper/">paper</a><a class="post-meta__tags" href="/tags/ICLR-2019/">ICLR 2019</a><a class="post-meta__tags" href="/tags/GCN/">GCN</a></div><div class="post_share"><div class="social-share" data-image="/img/bg.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/05/21/nlp/BBN/"><img class="prev-cover" src="/img/bg.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">&lt;&lt;BBN Bilateral-Branch Network with Cumulative Learning for Long-Tailed Visual Recognition&gt;&gt;论文阅读笔记</div></div></a></div><div class="next-post pull-right"><a href="/2022/05/15/algorithm/leetcode/6065/"><img class="next-cover" src="/img/bg.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">6065. 按位与结果大于零的最长组合</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/05/21/nlp/BBN/" title="<<BBN Bilateral-Branch Network with Cumulative Learning for Long-Tailed Visual Recognition>>论文阅读笔记"><img class="cover" src="/img/bg.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-21</div><div class="title"><<BBN Bilateral-Branch Network with Cumulative Learning for Long-Tailed Visual Recognition>>论文阅读笔记</div></div></a></div><div><a href="/2022/04/21/nlp/bertEm_MTB/" title="<<Matching the Blanks,Distributional Similarity for Relation Learning>>论文阅读笔记"><img class="cover" src="/img/bg.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-21</div><div class="title"><<Matching the Blanks,Distributional Similarity for Relation Learning>>论文阅读笔记</div></div></a></div><div><a href="/2022/05/13/nlp/GDP/" title="<<GDPNet Refining Latent Multi-View Graph for Relation Extraction>>论文阅读笔记"><img class="cover" src="/img/bg.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-13</div><div class="title"><<GDPNet Refining Latent Multi-View Graph for Relation Extraction>>论文阅读笔记</div></div></a></div><div><a href="/2022/05/01/nlp/CASREL/" title="<<A Novel Cascade Binary Tagging Framework for Relational Triple Extraction>>论文阅读笔记"><img class="cover" src="/img/bg.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-01</div><div class="title"><<A Novel Cascade Binary Tagging Framework for Relational Triple Extraction>>论文阅读笔记</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Crescent</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">87</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">89</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/crescent73"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/crescent73" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/mail%20to:crescent3919@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">咕咕咕🕊</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lt-lt-Semi-Supervised-Classification-with-Graph-Convolutional-Networks-gt-gt-%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">&lt;&lt; Semi-Supervised Classification with Graph Convolutional Networks &gt;&gt;论文阅读笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%A6%81"><span class="toc-number">1.1.</span> <span class="toc-text">概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.2.</span> <span class="toc-text">模型设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.3.</span> <span class="toc-text">模型实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E4%BA%8E%E5%88%86%E7%B1%BB%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.3.1.</span> <span class="toc-text">应用于分类任务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">1.4.</span> <span class="toc-text">实验结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.5.</span> <span class="toc-text">参考</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/05/21/nlp/BBN/" title="&lt;&lt;BBN Bilateral-Branch Network with Cumulative Learning for Long-Tailed Visual Recognition&gt;&gt;论文阅读笔记">&lt;&lt;BBN Bilateral-Branch Network with Cumulative Learning for Long-Tailed Visual Recognition&gt;&gt;论文阅读笔记</a><time datetime="2022-05-21T07:47:47.000Z" title="发表于 2022-05-21 15:47:47">2022-05-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/05/17/nlp/GCN/" title="&lt;&lt;Semi-Supervised Classification with Graph Convolutional Networks&gt;&gt; 论文阅读笔记">&lt;&lt;Semi-Supervised Classification with Graph Convolutional Networks&gt;&gt; 论文阅读笔记</a><time datetime="2022-05-17T08:02:12.000Z" title="发表于 2022-05-17 16:02:12">2022-05-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/05/15/algorithm/leetcode/6065/" title="6065. 按位与结果大于零的最长组合">6065. 按位与结果大于零的最长组合</a><time datetime="2022-05-15T08:03:07.000Z" title="发表于 2022-05-15 16:03:07">2022-05-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/05/15/algorithm/leetcode/6064/" title="6064. 不含特殊楼层的最大连续楼层数">6064. 不含特殊楼层的最大连续楼层数</a><time datetime="2022-05-15T08:02:59.000Z" title="发表于 2022-05-15 16:02:59">2022-05-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/05/15/algorithm/leetcode/5234/" title="5234. 移除字母异位词后的结果数组">5234. 移除字母异位词后的结果数组</a><time datetime="2022-05-15T08:02:07.000Z" title="发表于 2022-05-15 16:02:07">2022-05-15</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/bg.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Crescent</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
